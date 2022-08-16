@@ -63,8 +63,8 @@ class UnittestHTMLParser(unittest.TestCase):
     def test_large_data_set(self):
 
         # todo: Some machines may process the test dataset quickly enough to fail this condition
-
-        url = r'file:test_files/large_data_set.html'
+        self._create_large_file()
+        url = r'file:test_files/temp_large_file.html'
         payload = {"url": url, 'tag': 'html'}
         test_resp = requests.post('http://localhost:8080/count', data=json.dumps(payload), headers=self.headers)
 
@@ -80,7 +80,7 @@ class UnittestHTMLParser(unittest.TestCase):
                          "Identified that a required argument is missing for tag response")
 
     def test_health_under_load(self):
-        payload = {"url": r'file:test_files/large_data_set.html', "tag": "html"}
+        payload = {"url": "https://www.bbc.co.uk/news", "tag": "html"}
 
         health_count = []
         for i in range(20):
@@ -93,6 +93,19 @@ class UnittestHTMLParser(unittest.TestCase):
 
         self.assertEqual(set(health_count), {200},
                          "Health service has remained up for duration of request spam")
+
+    def _create_large_file(self):
+        """ Create large file to add processing load to web service """
+        filename = 'test_files/temp_large_file.html'
+        if os.path.exists(filename):
+            pass
+        else:
+            with open(filename, 'w') as f:
+                test_data = ['test' for x in range(100000000)]
+                formatted = '<html>\n' + ' '.join(test_data) + '</html>\n'
+                f.write(formatted)
+
+        return filename
 
 
 if __name__ == "__main__":
