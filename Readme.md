@@ -4,11 +4,11 @@ This project runs a web service that will count the number of words contained in
 Given a request containing a URL and tag the service will download the source from the URL and count the number of words contained in the provided HTML tag.
 
 ## Table of contents
-[Summary](#summary)
-[Environment](#environment)
-[Installation] (#installation)
-[Discussion] (#discussion)
-[Usage] (#usage)
+1. [Summary](#summary)
+2. [Environment](#environment)
+3. [Installation](#installation)
+4. [Discussion](#discussion)
+5. [Usage](#usage)
 
 ## Summary
 The server is "html_parse_server.py" which has dependencies on "html_parser.py" and "utils.py" to serve the word cout and health functionality of the web service. By default we run our service on localhost:8080.
