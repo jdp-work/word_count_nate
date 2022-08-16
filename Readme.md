@@ -52,6 +52,19 @@ An example customer API has been included.
 Create docker container and run server using the command above.
 Log into container /home directory and run the unittest or extend the customer API.
 
+### Example command set
+#### Start container server
+* git clone https://github.com/jdp-work/word_count_nate .
+* docker build . --tag html_server:latest
+* docker run -ti -p 8080:8080 html_server:latest
+
+#### Run unit tests inside container
+* docker exec -it <CONTAINER_ID> /bin/bash
+* python unittest_html_parse_server.py --verbose
+
+#### Verify health service displayed in browser
+* http://localhost:8080/health
+
 ## Issues
 * large_data_set unit test will fail if not run locally inside docker container as it generates a file.
 
