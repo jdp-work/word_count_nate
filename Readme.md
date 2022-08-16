@@ -9,6 +9,7 @@ Given a request containing a URL and tag the service will download the source fr
 3. [Installation](#installation)
 4. [Discussion](#discussion)
 5. [Usage](#usage)
+6. [Issues](#issues)
 
 ## Summary
 The server is "html_parse_server.py" which has dependencies on "html_parser.py" and "utils.py" to serve the word cout and health functionality of the web service. By default we run our service on localhost:8080.
@@ -51,4 +52,6 @@ An example customer API has been included.
 Create docker container and run server using the command above.
 Log into container /home directory and run the unittest or extend the customer API.
 
+## Issues
+* large_data_set unit test will fail if not run locally inside docker container as it generates a file.
 
